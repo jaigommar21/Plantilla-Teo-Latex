@@ -31,21 +31,6 @@
 \newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
-\lstset{
-    language=Python,
-    literate={á}{{\'a}}1
-        {ã}{{\~a}}1
-        {é}{{\'e}}1
-        {ó}{{\'o}}1
-        {í}{{\'i}}1
-        {ñ}{{\~n}}1
-        {¡}{{!`}}1
-        {¿}{{?`}}1
-        {ú}{{\'u}}1
-        {Í}{{\'I}}1
-        {Ó}{{\'O}}1
-}
-
 % Language 
 \lstdefinelanguage{Python}{
 numbers=left,
@@ -79,10 +64,10 @@ emphstyle={\color{self}\slshape},
 %
 }
 
-\title[Introducci\'on a Big Data] %optional
-{ Introducci\'on a Big Data }
+\title[Title inside foot page] %optional
+{Title}
  
-\subtitle{Taller}
+\subtitle{Workshop}
  
 \author[JGM] % (optional, for multiple authors)
 {Ing.~Gómez~Marín,~Jaime}
@@ -90,7 +75,7 @@ emphstyle={\color{self}\slshape},
 \institute[TECSUP] % (optional)
 {
   
-    Departamento de TdG
+    TdG Department
 }
  
 \date{\today} 
@@ -104,217 +89,241 @@ emphstyle={\color{self}\slshape},
 
 % Index
 \begin{frame}
-\frametitle{\'Indice}
+\frametitle{Table of Contents}
 \begin{itemize}
-\item ¿Qu\'e es Big Data?
-\item Mas allá del Hype
-\item Big Data y la Ciencia de Datos
-\item Procesando el Big Data
-\item Bibliograf\'ia
+\item Introduction
+\item Recursion
+\begin{itemize}
+\item Recursion Function
+\item Factorial Function
+\item Recursion and Memory
+\item Recursion versus Iteration
+\item Tower of Hanoi puzzle
+\end{itemize}
+\item Backtracking
+\item Computational complexity of mathematical operations
+\item Conclusion
+\item Bibliography
 \end{itemize}
 \end{frame}
 
-% Introduccion
+% Introduction
 \begin{frame}
-\frametitle{Introducci\'on}
+\frametitle{Introduction}
  
-En esta sesi\'on se aprender\'a a usar  estructura de datos con los siguiente tipos de datos : 
-\alert{Tupla}, \alert{List} , \alert{Set} y \alert{Dictionary} en Python.
+In this session, we will look at one of the important topics,
+\alert{recursion} which will be used in almost every session, and also
+its relative \alert{backtracking}.
 
 \end{frame}
 
-% Big Data y la Ciencia de Datos
-\begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data }
 
+% What is Recursion
+\begin{frame}
+\frametitle{What is Recursion?}
 \begin{itemize}
-\item Integraci\'on 
-\item Analisis
-\item Visualizaci\'on
-\item Optimizaci\'on
-\item Securidad
-\item Gobernanza
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Escalas de los datos}
-\begin{figure}
-\includegraphics[scale=0.26]{img/2_Hyper}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Cloud Computing}
-\begin{figure}
-\includegraphics[scale=0.35]{img/2_CloudComputing}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{¿De donde viene los datos?}
-Las 3 mayores fuentes de datos: \\
-\begin{itemize}
-\item Datos generados por las personas
-\item Datos generados por las m\'aquinas
-\item Datos generados por los negocios
+\item Any function which \alert{calls ilself} is called recursive.
+\item A recursive method solves a problem by calling a copy of itself
+to work on a \alert{smaller problem}.
+\item The sequence of smaller problems must eventually converge on the \alert{base case}
 \end{itemize}
 \end{frame}
 
 
+% Why Recursion?
 \begin{frame}
-\frametitle{¿Qu\'e es Big Data?}
-\begin{figure}
-\includegraphics[scale=0.18]{img/1_BigData_Definition}
-\end{figure}
-\end{frame}
+\frametitle{Why Recursion?}
+\begin{itemize}
+\item Recursion is a useful \alert{ technique} borrowed from mathematics.
+\item Recursive code is generally shorter and easier to write than iterative code
+\item Generally, loops are turned into recursive functions when they are compiled or
+interpreted.
+\end{itemize}
 
-\begin{frame}
-\frametitle{Las 5 V de Big Data}
-\begin{figure}
-\includegraphics[scale=0.18]{img/1_BigData_5V}
-\end{figure}
-\end{frame}
+\begin{block}{For examples}
+Sort, search and traversal problems often have simple recursive solutions.
+\end{block}
 
-
-
-\begin{frame}
-\frametitle{Big Data Skills}
-Descubrir y analizar las tendencias que ocurren en los datos
-\begin{figure}
-\includegraphics[scale=0.3]{img/2_BigData_Skill}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Big Data : Fuentes}
-\begin{figure}
-\includegraphics[scale=0.3]{img/2_BigData_DataSources}
-\end{figure}
 \end{frame}
 
 
+% Recursion Function
 \begin{frame}
-\frametitle{Structured Data}
-\begin{figure}
-\includegraphics[scale=0.25]{img/2_Structured_Data}
-\end{figure}
+\frametitle{Recursion Function}
+\begin{itemize}
+\item A recursive function performs a task in part by calling itself to perform the subtasks.
+\item When the function does not recur, is called the base case.
+\end{itemize}
+
+\begin{block}{Pseudocode}
+\begin{algorithmic}
+\If{test for the base case}
+    \State{return some base case value}
+\Else
+    \State{return (some work and then a recursive call)}
+\EndIf
+\end{algorithmic}
+\end{block}
+
 \end{frame}
 
+% Example : Factorial Function
 \begin{frame}
-\frametitle{Semi Structured Data}
-\begin{figure}
-\includegraphics[scale=0.25]{img/2_Semi_Structured_Data}
-\end{figure}
+\frametitle{Example : Factorial Function}
+\begin{block}{Definition}
+\[
+  f(x) =
+  \begin{cases}
+  	1    		& \text{if $n=0$} \\
+      	n*(n-1)! & \text{if $n>=1$} 
+  \end{cases}
+\]
+\end{block}
+
+\begin{block}{Exercise}
+Implement a method to get the factorial of a number.
+\end{block}
+
 \end{frame}
 
 
+% Code : Factorial Function
 \begin{frame}
-\frametitle{Unstructured Data}
-\begin{figure}
-\includegraphics[scale=0.11]{img/2_Unstructured_Data}
-\end{figure}
+\frametitle{Code : Factorial Function}
+\lstinputlisting[language=Python]{sourcecode/Factorial.py}
 \end{frame}
 
 
-
+% Image : Factorial Function
 \begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data : Integraci\'on}
+\frametitle{Factorial vs Time Processing}
 \begin{figure}
-\includegraphics[scale=0.3]{img/3_Integration}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data : An\'alisis}
-\begin{figure}
-\includegraphics[scale=0.3]{img/3_Analysis}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data: Visualizaci\'on}
-\begin{figure}
-\includegraphics[scale=0.4]{img/3_Visualization}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data : Seguridad}
-\begin{figure}
-\includegraphics[scale=0.35]{img/3_Security}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Aspectos de una plataforma de Big Data : Gobernanza}
-\begin{figure}
-\includegraphics[scale=0.3]{img/3_Governance}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Tecnolog\'ias de la plataforma de Big Data}
-\begin{figure}
-\includegraphics[scale=0.3]{img/3_hadoop_vs_spark}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Big Data y Data Science}
-\begin{figure}
-\includegraphics[scale=0.325]{img/3_BigData_DataScience}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Data Science : Proceso de destilar los datos }
-\begin{figure}
-\includegraphics[scale=0.35]{img/3_DataScience_Distilling}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Data Scientist Skill }
-\begin{figure}
-\includegraphics[scale=0.35]{img/3_DataScientist_Skill}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Modern Data Scientist }
-\begin{figure}
-\includegraphics[scale=0.20]{img/3_DataScientist_Skill_2}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Data Science Process }
-\begin{figure}
-\includegraphics[scale=0.30]{img/3_DataScience_Process}
-\end{figure}
-\end{frame}
-
-\begin{frame}
-\frametitle{Big Data : Componentes y Ecosistemas }
-\begin{figure}
-\includegraphics[scale=0.45]{img/4_BigData_Components_Ecosystems}
+\includegraphics[scale=0.5]{img/ch01_factorial_time.png}
+\caption{01}
 \end{figure}
 \end{frame}
 
 
+% Recursion and Memory
+\begin{frame}
+\frametitle{Recursion and Memory}
+\begin{itemize}
+\item Each recursive call makes a new copy of that method (actually only the variables) in memory.
+\item Once a method ends (that is, returns some data), the copy of that returning method is removed from memory.
+\item The recursive solutions look simple but visualization and tracing takes time.
+\end{itemize}
+\end{frame}
 
+% Code : Recursion and Memory
+\begin{frame}
+\frametitle{Code : Recursion and Memory}
+\lstinputlisting[language=Python]{sourcecode/RecursionMemory.py}
+\end{frame}
+
+% Recursion vs Iteration
+\begin{frame}
+\frametitle{Recursion versus Iteration}
+\begin{itemize}
+\item Which way is better? - iteration or recursion? : \alert{Depends on what we are trying to do.}
+\item Once a method ends (that is, returns some data), the copy of that returning method is removed from memory.
+\item A recursive approach makes it simpler to solve a problem that may not have the most obvious of answers.
+\item  But, recursion adds overheacl for each recursive call.
+\end{itemize}
+\end{frame}
+
+% Recursion vs Iteration
+\begin{frame}
+\frametitle{Recursion versus Iteration}
+\begin{tabular}{|L{5cm}|L{5cm}|}
+\hline
+\textbf{Recursion} & \textbf{Iteration}  \\
+\hline
+Terminates when a base case is reached 
+& Terminates when a condition is proven lo be false. \\
+\hline
+Each recursive call require extra space on the stack frame (memory) 
+& Each iteration docs not require extra space.  \\
+\hline
+If we get infinive recursion, the program may run out of memory 
+and result in stack overllow.
+& An infinite loop could loop forever since there is no extra memory being created.  \\
+\hline
+Solutions lo some problems are easier lo formulate recursively.
+& lterative solutions to a problem may not always be as obvious as a recursive solution. \\
+\hline
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Towers of Hanoi puzzle}
+\begin{itemize}
+\item Only one disk may be moved at a time.
+\item Each move consists of taking the upper disk from one of the rods and sliding it onto another rod, on top
+of the other disks that may already be present on that rod.
+\item No disk may be placed on top of a smaller disk.
+\end{itemize}
+\begin{figure}
+\includegraphics[scale=0.5]{img/ch01_tower_of_hanoi.jpg}
+\caption{02}
+\end{figure}
+\end{frame}
+
+% Code : Towers of Hanoi puzzle
+\begin{frame}
+\frametitle{Code : Towers of Hanoi puzzle}
+\lstinputlisting[language=Python]{sourcecode/Hanoi.py}
+\end{frame}
+
+
+% Image : Towers of Hanoi puzzle
+\begin{frame}
+\frametitle{Hanoi vs Time Processing}
+\begin{figure}
+\includegraphics[scale=0.5]{img/ch01_hanoi_time.png}
+\caption{03}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}
+\frametitle{Backtracking}
+\begin{itemize}
+\item Backtracking is a form or recursion.
+\item Sometimes the best algorithm for a problem is to try all possibilities.
+\item Backtracking is a recursive algorithm for finding all (or some) solutions to some computational problems.
+\end{itemize}
+
+\begin{block}{Exercise}
+Generate all the binary strings with n bits.
+\end{block}
+
+\end{frame}
+
+
+% Code : Backtracking
+\begin{frame}
+\frametitle{Code : Backtracking}
+\lstinputlisting[language=Python]{sourcecode/BacktrackingSimple.py}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Computational complexity of mathematical operations}
+\begin{figure}
+\includegraphics[scale=0.20]{img/ch01_comparison_computational_complexity.png}
+\caption{04 : Graphs of functions commonly used in the analysis of algorithms, showing the number of operations N versus input size n for each function}
+\end{figure}
+\end{frame}
 
 
 \begin{frame}
 \frametitle{Conclusion}
 \begin{itemize}
-\item Tuple: Es una secuencia de objetos de Python inmutables. Las tuplas son secuencias, al igual que las listas.
-\item List: Es un tipo de datos más versátil disponible en Python que puede escribirse como una lista de valores separados por comas (items) entre corchetes.
-\item Set: Es un tipo de datos sin orden y que no permite datos repetidos
-\item Dictionary: Son un tipo de estructuras de datos que permite guardar un conjunto no ordenado de pares clave-valor, siendo las claves únicas dentro de un mismo diccionario.
-
+\item Recursion is a programming technique that allows the programmer to express
+operations in terms of themselves.
+\item Backtracking is a recursive algorithm for finding all (or some) solutions to some computational problems.
 \end{itemize}
 \end{frame}
 
@@ -322,10 +331,10 @@ Descubrir y analizar las tendencias que ocurren en los datos
 \frametitle{Bibliography}
 
 \begin{thebibliography}{0000}
-  \bibitem{} Naomi Ceder. The Quick Python Book - Manning Publications, 2018.
+  \bibitem{} Narasimha Karumanchi. Data Structure and Algorithmic - Thinking with Python, 2019.
+  \bibitem{} John Wiley \& Sons. Data Structure And Algorithms In Java  internet, 2010.
 \end{thebibliography}
 \end{frame}
-
 
 
 \end{document}
